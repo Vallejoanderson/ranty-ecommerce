@@ -1,3 +1,26 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+h1, h2 {
+	font-family: 'Alegreya Sans', sans-serif;
+	font-size: 50px;
+	font-weight: 900;
+	letter-spacing: 2px;
+}
+
+p {
+	font-size: 25px;
+	font-weight: 400;
+}
+
+p, div{
+	font-family: 'Lato', sans-serif;
+}
+
+.image{
+	border-top-left-radius: 50px;
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 50px;
+	border-bottom-left-radius: 50px;
+}
