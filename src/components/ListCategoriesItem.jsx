@@ -33,7 +33,7 @@ export const ListCategoriesItem = ( { categories } ) => {
 				categories.map( ( c ) => { // c = category
 					return <div onClick = { () => { getProductsByCategory( c.slug) } }
 											key = { c.id } 
-											className="text-white tracking-widest font-semibold hover:bg-white hover:text-newblue py-2 px-4 rounded-full cursor-pointer animate__animated animate__flipInX">{c.name}</div>
+											className="capitalize text-white tracking-widest font-semibold hover:bg-white hover:text-newblue py-2 px-4 rounded-full cursor-pointer animate__animated animate__flipInX">{c.slug}</div>
 				})
 			}
 		</div>
