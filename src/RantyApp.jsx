@@ -1,14 +1,19 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { NavBar } from "./components/NavBar";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Home } from "./components/Home";
 import { ProductsContext } from "./components/ProductsContext";
 import './index.css';
+import { useCart } from "./components/hooks/useCart";
 
 const App = () => {
 
   const [ products, setProducts ] = useState();
-  const [ cart, setCart ] = useState([]);
+  const { cart, add } = useCart();
+
+  useEffect( () => {
+    console.log( cart );
+  }, [cart] );
 
   return (
           <ProductsContext.Provider
@@ -16,7 +21,7 @@ const App = () => {
                        products,
                        setProducts,
                        cart,
-                       setCart,
+                       add,
                      }}
           >
             <BrowserRouter >

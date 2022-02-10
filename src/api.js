@@ -14,24 +14,28 @@ export const getCategories = async() => {
 export const fetchProductsByCategory = async( slug ) => {
 	try{
 		const { data } = await axios.get(`${baseUrl}/categories/${slug}`);
-		return ( data.products.map( product => { return { id: product.id,
-																													title: product.title, 
-																													desc: product.description, 
-																													image: product.image.url,  
-																													price: product.price, 
-																													} } ) );
+		return ( data.products.map( product => 
+			{ return{ id: product.id,
+								slug: product.slug,
+								title: product.title, 
+								desc: product.description, 
+								image: product.image.url,  
+								price: product.price, 
+								} } ) );
 	} catch( err ){ console.log( err ) };
 }
 
 export const fetchAllProducts = async() => {
 	try{
 		const { data } = await axios.get(`${baseUrl}/products`);
-		return( data.map( product => { return { id: product.id,
-																								title: product.title, 
-																								desc: product.description, 
-																								image: product.image.url,  
-																								price: product.price, 
-																								} } ) );
+		return( data.map( product => 
+			{ return{ id: product.id,
+								slug: product.slug,
+								title: product.title, 
+								desc: product.description, 
+								image: product.image.url,  
+								price: product.price, 
+								} } ) );
 	} catch ( err ){ console.log( err ) };
 }
 
