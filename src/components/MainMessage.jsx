@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Button } from './Button';
 
 export const MainMessage = () => {
 	return(
@@ -9,16 +10,14 @@ export const MainMessage = () => {
 			<h1>
 						Welcome to Ranty <br />
 			</h1>
-			<p className="mt-2">
+			<p className="mt-2 mb-8">
 						Buy everything you need <br />
 						Receive it everywhere you are <br />
 						Enjoy it whenever you like <br />
 			</p>
-			<button className="bg-newblue hover:bg-indigo-700 rounded-full py-4 px-8 mb-8 text-white tracking-wider font-bold mt-8">
-				<Link to="/order" >
-					Who we are
-				</Link>
-			</button>
+			<Link to="/about" >
+				<Button text = { "Who are we" }/>
+			</Link>
 		</div>
 	)
 };

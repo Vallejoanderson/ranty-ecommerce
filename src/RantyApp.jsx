@@ -8,12 +8,15 @@ import './index.css';
 const App = () => {
 
   const [ products, setProducts ] = useState();
+  const [ cart, setCart ] = useState([]);
 
   return (
           <ProductsContext.Provider
             value = {{
                        products,
                        setProducts,
+                       cart,
+                       setCart,
                      }}
           >
             <BrowserRouter >

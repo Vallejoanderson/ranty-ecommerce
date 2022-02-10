@@ -1,13 +1,16 @@
 
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { ProductsContext } from './ProductsContext';
+
  
 export const NavBar = () => {
 
 	const [ hideMenu, setHideMenu ] = useState( true );
+	const { cart } = useContext( ProductsContext );
 
 	return (
-		<nav className={`flex items-center justify-between flex-wrap bg-newblue p-2`}> 
+		<nav className={`fixed z-10 top-0 flex items-center justify-between flex-wrap bg-newblue p-2 w-full`}> 
 			<div className="flex items-center flex-shrink-0 text-white mr-6">
 				<span className="font-semibold text-xl tracking-tight tracking-widest pl-8"> RANTY</span>
 			</div>
@@ -22,11 +25,11 @@ export const NavBar = () => {
 						<i className="fas fa-home"></i> Home
 					</Link>
 					<Link to="/contact" className="block mt-4 lg:inline-block lg:mt-0 text-white mr-4 tracking-wide font-medium hover:bg-white hover:text-newblue py-2 px-4 rounded-full">
-						<i className="fas fa-shopping-cart"></i> Cart
+						<i className="fas fa-shopping-cart"></i>
+						{ cart.length > 0 ? <p className="inline ml-2 px-2 rounded-full border-2 border-white">{cart.length}</p> : ' Cart' }
 					</Link>
 				</div>
 			</div>
 		</nav>
-
 	);
 };
