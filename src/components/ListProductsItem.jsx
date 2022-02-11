@@ -14,7 +14,7 @@ export const ListProductsItem = ( { product:p }) => {
 							<p>{ p.title }</p>
 							<img className="mb-4" alt="product image" height={ 150 } width={ 150 } src={ getProductImage( p.image ) }/>
 							<p className="text-base font-bold text-gray-600 mb-2 pl-2">Price: ${ p. price }</p>
-							<Button fn = { () => { setShowModal( showModal => !showModal ); add( p ) } }
+							<Button fn = { () => { setShowModal( showModal => !showModal ); add(p) } }
 											text = {'Buy this item'} />
 							<AddItemModal
 														showModal = { showModal }

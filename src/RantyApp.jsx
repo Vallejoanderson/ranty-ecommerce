@@ -9,7 +9,7 @@ import { useCart } from "./components/hooks/useCart";
 const App = () => {
 
   const [ products, setProducts ] = useState();
-  const { cart, add } = useCart();
+  const { cart, add, productsCounter } = useCart();
 
   useEffect( () => {
     console.log( cart );
@@ -22,6 +22,7 @@ const App = () => {
                        setProducts,
                        cart,
                        add,
+                       productsCounter
                      }}
           >
             <BrowserRouter >
