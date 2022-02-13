@@ -6,15 +6,17 @@ import { ProductsContext } from "./components/ProductsContext";
 import { useCart } from "./components/hooks/useCart";
 import { Cart } from "./components/Cart";
 import './index.css';
+import { Checkout } from "./components/Checkout";
+import { ThanksForBuying } from "./components/ThanksForBuying";
 
 const App = () => {
 
   const [ products, setProducts ] = useState();
-  const { cart, add, rm, productsCounter } = useCart();
+  const { cart, add, rm, total, productsCounter } = useCart();
 
-  useEffect( () => {
-    console.log( cart );
-  }, [cart] );
+  // useEffect( () => {
+  //   console.log( cart );
+  // }, [cart] );
 
   return (
           <ProductsContext.Provider
@@ -24,6 +26,7 @@ const App = () => {
                        cart,
                        add,
                        rm,
+                       total,
                        productsCounter
                      }}
           >
@@ -31,7 +34,9 @@ const App = () => {
               <NavBar />
               <Routes>
                 <Route path="/cart" element = { <Cart cart = { cart }/> }/>
+                <Route path="/checkout" element = { <Checkout /> }/> 
                 <Route path="/" element = { <Home /> }/>
+                <Route path="/thanks" element = { <ThanksForBuying /> } /> "
               </Routes>
             </BrowserRouter>
           </ProductsContext.Provider>

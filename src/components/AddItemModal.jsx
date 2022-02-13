@@ -1,5 +1,6 @@
 
 import React from 'react'
+import { Link } from 'react-router-dom';
 import { getProductImage } from '../api'
 import { Button } from './Button'
 
@@ -43,8 +44,10 @@ export const AddItemModal = ( { showModal, setShowModal, product:p }) => {
 						</div>
 						{/*footer*/}
 						<div className="flex justify-around gap-2 justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
+							<Link to='/cart'>
+								<Button fn = { setShowModal } text = { "Cart" }/>
+							</Link>
 							<Button fn = { setShowModal } text = { "Keep shopping" }/>
-							<Button fn = { setShowModal } text = { "Cart" }/>
 						</div>
 					</div>
 				</div>
