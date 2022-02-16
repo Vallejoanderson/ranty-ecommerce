@@ -12,11 +12,7 @@ import { ThanksForBuying } from "./components/ThanksForBuying";
 const App = () => {
 
   const [ products, setProducts ] = useState();
-  const { cart, add, rm, total, productsCounter } = useCart();
-
-  // useEffect( () => {
-  //   console.log( cart );
-  // }, [cart] );
+  const { cart, add, rm, productsCounter } = useCart();
 
   return (
           <ProductsContext.Provider
@@ -26,7 +22,6 @@ const App = () => {
                        cart,
                        add,
                        rm,
-                       total,
                        productsCounter
                      }}
           >
