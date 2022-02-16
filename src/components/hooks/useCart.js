@@ -6,7 +6,7 @@ export const useCart = ( initialState = [], initialCount = 0 ) => {
 
 	const [ cart, setCart ] = useState( initialState );
 	const [ productsCounter, setProductsCounter ] = useState( initialCount );
-	const [ total, setTotal ] = useState( initialCount );
+	// const [ total, setTotal ] = useState( initialCount );
 
 	const add = ( product ) => { // add an item to the cart
 
@@ -18,13 +18,13 @@ export const useCart = ( initialState = [], initialCount = 0 ) => {
 			found.quantity = found.quantity + 1;
 		}
 		setProductsCounter( productsCounter => productsCounter + 1 )
-		getTotal();
+		// getTotal();
 	}
 
 	const rm = ( product ) => { // remove an item from the cart
 		if( product.quantity > 1 ){
 			product.quantity = product.quantity - 1
-			getTotal();
+			// getTotal();
 		}
 		else{
 			setCart( cart.filter( itemFromCart => ( itemFromCart !== product ) ) )
@@ -32,17 +32,17 @@ export const useCart = ( initialState = [], initialCount = 0 ) => {
 		setProductsCounter( productsCounter => productsCounter - 1 );
 	}
 
-	const getTotal = () => {
+	// const getTotal = () => {
 
-		cart.map( product => { setTotal( total => total + ( product.quantity*product.price ) ) });
+	// 	cart.map( product => { setTotal( total => total + ( product.quantity*product.price ) ) });
 
-	}
+	// }
  
 	return {
 		cart,
 		add,
 		rm,
-		total,
+		// total,
 		productsCounter,
 	}
 

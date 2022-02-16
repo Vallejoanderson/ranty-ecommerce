@@ -1,9 +1,25 @@
 
-import { useContext } from 'react'
+import { useContext, useState, useEffect } from 'react'
 import { ProductsContext } from './ProductsContext';
 
 export const CheckoutCart = () => {
-	const { cart, total } = useContext( ProductsContext );
+	const { cart } = useContext( ProductsContext );
+	const [ total, setTotal ] = useState( 0 );
+
+	const getTotal = () => {
+		let sum = 0;
+		cart.forEach( ({quantity, price}) => {
+			sum = sum + quantity * price;
+			console.log( sum )
+		});
+		setTotal( sum );
+	}
+
+	useEffect(() => {
+		getTotal();
+	}, [ cart ])
+	
+
 	return (
 		<div>
 			<p className="text-center text-base">Your cart</p>
@@ -26,7 +42,7 @@ export const CheckoutCart = () => {
 					}
 					<tr className="bg-gray-500 text-white">
 						<td className="px-12">Total</td>
-						<td className="px-12">{(total).toFixed(2)}</td>
+						<td className="px-12">{ total }</td>
 					</tr>
 				</tbody>
 			</table>
