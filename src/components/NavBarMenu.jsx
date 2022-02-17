@@ -1,11 +1,24 @@
 
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import { ProductsContext } from './ProductsContext';
 
 export const NavBarMenu = ({  hideMenu, setHideMenu }) => {
 
-	const { productsCounter } = useContext( ProductsContext );
+	const { cart } = useContext( ProductsContext );
+	const [ productsCounter, setProductsCounter ] = useState(0);
+
+	const getTotalProducts = () => {
+		let total = 0;
+		cart.forEach( ({quantity}) => { total = total + quantity } );
+		console.log(total)
+		setProductsCounter(total);
+	}
+
+	useEffect( () => {
+		getTotalProducts();
+		localStorage.setItem( 'cart', JSON.stringify(cart) );
+	}, [cart] )
 
 	return (
 					<>

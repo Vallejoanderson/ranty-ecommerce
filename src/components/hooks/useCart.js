@@ -2,10 +2,10 @@
 
 import { useState } from 'react'
 
-export const useCart = ( initialState = [], initialCount = 0 ) => {
+export const useCart = (  initialCount = 0 ) => {
+	console.log('Has entrado en useCart');
 
-	const [ cart, setCart ] = useState( initialState );
-	const [ productsCounter, setProductsCounter ] = useState( initialCount );
+	const [ cart, setCart ] = useState( JSON.parse(localStorage.getItem('cart')) || [] );
 
 	const add = ( product ) => { // add an item to the cart
 
@@ -15,25 +15,23 @@ export const useCart = ( initialState = [], initialCount = 0 ) => {
 		}
 		else{
 			found.quantity = found.quantity + 1;
+			setCart( [ ...cart ] );
 		}
-		setProductsCounter( productsCounter => productsCounter + 1 )
 	}
 
 	const rm = ( product ) => { // remove an item from the cart
 		if( product.quantity > 1 ){
-			product.quantity = product.quantity - 1
-		}
-		else{
+			product.quantity = product.quantity - 1;
+			setCart( [ ...cart ] )
+		}else{
 			setCart( cart.filter( itemFromCart => ( itemFromCart !== product ) ) )
 		}
-		setProductsCounter( productsCounter => productsCounter - 1 );
 	}
 
 	return {
 		cart,
 		add,
 		rm,
-		productsCounter,
 	}
 
 }

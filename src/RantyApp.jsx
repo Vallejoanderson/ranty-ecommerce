@@ -12,7 +12,7 @@ import { ThanksForBuying } from "./components/ThanksForBuying";
 const App = () => {
 
   const [ products, setProducts ] = useState();
-  const { cart, add, rm, productsCounter } = useCart();
+  const { cart, add, rm } = useCart();
 
   return (
           <ProductsContext.Provider
@@ -21,8 +21,7 @@ const App = () => {
                        setProducts,
                        cart,
                        add,
-                       rm,
-                       productsCounter
+                       rm
                      }}
           >
             <BrowserRouter >
