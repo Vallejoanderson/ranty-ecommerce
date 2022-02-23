@@ -17,7 +17,6 @@ export const NavBarMenu = ({  hideMenu, setHideMenu }) => {
 
 	useEffect( () => {
 		getTotalProducts();
-		localStorage.setItem( 'cart', JSON.stringify(cart) );
 	}, [cart] )
 
 	return (

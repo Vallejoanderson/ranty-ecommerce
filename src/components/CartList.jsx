@@ -2,11 +2,10 @@
 import { ProductsContext } from './ProductsContext';
 import { getProductImage } from '../api';
 import { useContext } from 'react';
-import { Link } from 'react-router-dom';
-import { Button } from './Button';
+import { types } from './types/types';
 
 export const CartList = ({cart}) => {
-	const { add, rm } = useContext( ProductsContext );
+	const { dispatch } = useContext( ProductsContext );
 	return( 
 		cart.map( p  => {
 			return(
@@ -19,10 +18,10 @@ export const CartList = ({cart}) => {
 									<p className="">{`${p.quantity} x $${p.price} = $${((p.quantity)*(p.price)).toFixed(2)}`}</p>
 								</div>
 								<div className="flex flex-col gap-6">
-									<button onClick={ () => { add(p) } }
+									<button onClick={ () => { dispatch({type: types.add, payload: p}) } }
 													className="border-2 text-white font-bold bg-green-500 border-green-500 px-2 rounded-lg">+
 									</button>
-									<button onClick={ () => { rm(p) } }
+									<button onClick={ () => { dispatch({type: types.rm, payload: p}) } }
 													className="border-2 text-white font-bold bg-red-600 border-red-600 px-2 rounded-lg">-</button>
 								</div>
 							</div>
