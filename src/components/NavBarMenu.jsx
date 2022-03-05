@@ -33,7 +33,7 @@ export const NavBarMenu = ({  hideMenu, setHideMenu }) => {
 										<i className="fas fa-home"></i> Home
 									</div>
 								</Link>
-								<Link to="/cart" >
+								<Link to="/cart/orders" >
 									<div className="block mt-4 lg:inline-block lg:mt-0 text-white mr-4 tracking-wide font-medium hover:bg-white hover:text-newblue py-2 px-4 rounded-full">
 										<i className="fas fa-shopping-cart"></i>
 											{ productsCounter > 0 ? <p className="inline ml-2 px-2 rounded-full border-2 border-white">{productsCounter}</p> : ' Cart' }

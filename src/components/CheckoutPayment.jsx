@@ -41,7 +41,7 @@ export const CheckoutPayment = () => {
 				</div>
 			</div>
 			<div className="text-center">
-				<Link to="/thanks">
+				<Link to="/cart/thanks">
 					<button type="submit" className="hover:bg-newblue hover:text-white font-bold px-8 py-4 rounded-full border-2 border-newblue bg-white text-newblue">CONFIRM PAYMENT</button>
 				</Link>
 			</div>

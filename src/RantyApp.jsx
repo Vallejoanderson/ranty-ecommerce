@@ -1,12 +1,7 @@
 import { useEffect, useReducer, useState } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { NavBar } from "./components/NavBar";
-import { Home } from "./components/Home";
 import { ProductsContext } from "./components/ProductsContext";
-import { Cart } from "./components/Cart";
-import { Checkout } from "./components/Checkout";
-import { ThanksForBuying } from "./components/ThanksForBuying";
 import { cartReducer } from "./components/reducers/cartReducer";
+import { AppRouter } from "./routers/AppRouter";
 import './index.css';
 
 const init = () => {
@@ -17,6 +12,7 @@ const App = () => {
 
   const [ products, setProducts ] = useState();
   const [ cart, dispatch ] = useReducer( cartReducer, [], init );
+  const [ isLoggedIn, setIsLoggedIn ] = useState(false);
 
   useEffect( () => {
     localStorage.setItem( 'cart', JSON.stringify(cart) );
@@ -30,17 +26,10 @@ const App = () => {
                        setProducts,
                        cart,
                        dispatch,
+                       isLoggedIn,
                      }}
           >
-            <BrowserRouter >
-              <NavBar />
-              <Routes>
-                <Route path="/cart" element = { <Cart cart = { cart }/> }/>
-                <Route path="/checkout" element = { <Checkout /> }/> 
-                <Route path="/" element = { <Home /> }/>
-                <Route path="/thanks" element = { <ThanksForBuying /> } /> "
-              </Routes>
-            </BrowserRouter>
+            <AppRouter />
           </ProductsContext.Provider>
          );
 };

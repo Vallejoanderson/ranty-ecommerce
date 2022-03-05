@@ -14,7 +14,7 @@ export const Cart = ({ cart }) => {
 				cart.length > 0 && <CartList cart = { cart } />
 			}
 			{
-				cart.length > 0 ? <Link to='/checkout'><Button text = "Proceed to checkout"/></Link>
+				cart.length > 0 ? <Link to='/cart/checkout'><Button text = "Proceed to checkout"/></Link>
 				: <CartEmptyMessage />
 			}
 		</div>
