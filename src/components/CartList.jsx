@@ -1,17 +1,15 @@
-
-import { ProductsContext } from './ProductsContext';
-import { getProductImage } from '../api';
-import { useContext } from 'react';
+import { getProductImage } from '../actions/products';
+import { useDispatch } from 'react-redux';
 import { types } from './types/types';
 
 export const CartList = ({cart}) => {
-	const { dispatch } = useContext( ProductsContext );
+	const dispatch = useDispatch();
 	return( 
 		cart.map( p  => {
 			return(
 							<div key={ p.id } className="flex justify-center gap-6 text-black font-bold hover:text-white hover:bg-newblue cursor-pointer shadow hover:shadow-2xl border-2 py-4 border-newblue rounded-lg w-	full md:w-2/3 lg:w-1/4 animate__animated animate__flipInX">
 								<div>
-									<img height={30} width={60} src = { getProductImage( p.image ) } alt = {p.slug} />
+									<img height={30} width={60} src = { getProductImage( p.image.url ) } alt = {p.slug} />
 								</div>
 								<div>
 									<p className="capitalize border-b-2">{ p.slug }</p>

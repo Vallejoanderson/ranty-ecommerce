@@ -1,22 +1,18 @@
 
-import React, { useContext, useEffect } from 'react';
-import { ProductsContext } from './ProductsContext';
-import { fetchProductsByCategory, fetchAllProducts } from '../api';
+import React, {  useEffect } from 'react';
+import { fetchProductsByCategory, fetchAllProducts } from '../actions/products';
+import { useDispatch } from 'react-redux';
 
 export const ListCategoriesItem = ( { categories } ) => {
 
-	const { setProducts } = useContext( ProductsContext );
+	const dispatch = useDispatch();
 
-	const getProductsByCategory = async( slug ) => {
+	const getProductsByCategory = (slug) => {
+		dispatch(fetchProductsByCategory(slug));
+	}
 
-		setProducts( await fetchProductsByCategory( slug ) );
-
-	} 
-
-	const getAllProducts = async() => {
-
-		setProducts( await fetchAllProducts() );
-
+	const getAllProducts = () => {
+		dispatch(fetchAllProducts());
 	}
 
 	useEffect( () => {

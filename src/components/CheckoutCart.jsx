@@ -1,9 +1,9 @@
 
-import { useContext, useState, useEffect } from 'react'
-import { ProductsContext } from './ProductsContext';
+import {  useState, useEffect } from 'react'
+import { useSelector } from 'react-redux';
 
 export const CheckoutCart = () => {
-	const { cart } = useContext( ProductsContext );
+	const cart = useSelector( state => state.cart );
 	const [ total, setTotal ] = useState( 0 );
 
 	const getTotal = () => {

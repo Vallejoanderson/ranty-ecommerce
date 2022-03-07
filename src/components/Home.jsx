@@ -1,18 +1,18 @@
 
-import React, { useContext, useEffect, useState } from 'react';
-import { getCategories } from '../api';
+import React, { useEffect } from 'react';
+import { fetchCategories } from '../actions/products';
 import { ListCategories } from './ListCategories';
 import { ListProducts } from './ListProducts';
 import { MainWelcome } from './MainWelcome';
-import { ProductsContext } from './ProductsContext';
+import { useDispatch, useSelector } from 'react-redux';
+
 
 export const Home = () => {
-
-	const [ categories, setCategories ] = useState([]);
-	const { products } = useContext( ProductsContext );
-
-	const getData = async() => {
-		setCategories( await getCategories() || []);
+	
+	const dispatch = useDispatch();
+	
+	const getData = () => {
+		dispatch( fetchCategories());
 	}
 
 	useEffect( () => {
@@ -21,8 +21,8 @@ export const Home = () => {
 
 	return( <>
 						<MainWelcome />
-						<ListCategories categories = { categories } />
-						<ListProducts products = { products } />
+						<ListCategories />
+						<ListProducts />
 				  </>
 	)
 };

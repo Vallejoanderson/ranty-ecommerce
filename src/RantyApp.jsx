@@ -1,37 +1,31 @@
-import { useEffect, useReducer, useState } from "react";
-import { ProductsContext } from "./components/ProductsContext";
-import { cartReducer } from "./components/reducers/cartReducer";
+import { useState } from "react";
 import { AppRouter } from "./routers/AppRouter";
+import { store } from "./store/store";
+import { Provider } from 'react-redux';
 import './index.css';
-
-const init = () => {
-  return JSON.parse( localStorage.getItem('cart') ) || [];
-}
 
 const App = () => {
 
   const [ products, setProducts ] = useState();
-  const [ cart, dispatch ] = useReducer( cartReducer, [], init );
-  const [ isLoggedIn, setIsLoggedIn ] = useState(false);
+  // const [ cart, dispatch ] = useReducer( cartReducer, [], init );
 
-  useEffect( () => {
-    localStorage.setItem( 'cart', JSON.stringify(cart) );
-    console.log(cart);
-  }, [cart])
-
+  // useEffect( () => {
+  //   localStorage.setItem( 'cart', JSON.stringify(cart) );
+  //   console.log(cart);
+  // }, [cart])
+  
+  // value = {{
+  //   products,
+  //   setProducts,
+  //   cart,
+  //   dispatch,
+  //   isLoggedIn,
+  // }}
   return (
-          <ProductsContext.Provider
-            value = {{
-                       products,
-                       setProducts,
-                       cart,
-                       dispatch,
-                       isLoggedIn,
-                     }}
-          >
-            <AppRouter />
-          </ProductsContext.Provider>
-         );
+        <Provider store={store}>
+          <AppRouter />
+        </Provider>
+      );
 };
 
 export default App;

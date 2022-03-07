@@ -1,22 +1,24 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { startLogin } from '../actions/auth';
 import { useForm } from '../hooks/useForm';
 
 export const LoginScreen = () => {
 
 	const [ values, handleInputChange ] = 
 	useForm({
-						email: '',
+						identifier: '',
 						password: '',
 					});
 
-	const { email, password } = values;
+	const { identifier, password } = values;
 
 	const handleLogin = (e) => {
 		e.preventDefault();
 		console.log('You are trying to logging in');
-		console.log(email, password);
+		console.log(identifier, password);
+		startLogin(values)
 	}
 	
 	console.log('LoginScreen');
@@ -26,11 +28,11 @@ export const LoginScreen = () => {
 			<form onSubmit={handleLogin}>
 				<input 
 							type="text"
-							placeholder="Email"
-							name="email"
+							placeholder="identifier"
+							name="identifier"
 							className="w-full mb-2 border-2 border-newblue rounded pl-2 focus:outline-none text-black"
 							autoComplete="off"
-							value={email}
+							value={identifier}
 							onChange={handleInputChange}
 				/>
 				<input 

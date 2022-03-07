@@ -1,6 +1,6 @@
 import { types } from "../types/types";
 
-export const cartReducer = (cart, action) => {
+export const cartReducer = (cart=[], action) => {
 	console.log(action);
 	switch ( action.type ) {
 		case types.add:

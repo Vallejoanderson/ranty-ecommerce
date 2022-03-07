@@ -2,6 +2,7 @@
 import React from 'react'
 import { useForm } from '../hooks/useForm';
 import { Link } from 'react-router-dom';
+import { startRegister } from '../actions/auth';
 
 export const RegisterScreen = () => {
 
@@ -16,8 +17,7 @@ export const RegisterScreen = () => {
 
 	const handleRegister = (e) => {
 		e.preventDefault();
-		console.log('You are trying to register');
-		console.log(name, password, email);
+		startRegister( values );
 	}
 	
 	console.log('RegisterScreen');

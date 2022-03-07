@@ -1,10 +1,13 @@
 
 
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { ListCategoriesItem } from './ListCategoriesItem';
 
 
-export const ListCategories = ( { categories } ) => {
+export const ListCategories = () => {
+
+	const categories = useSelector( state => state.cats );
 
 	return(
 			<div className="text-center">

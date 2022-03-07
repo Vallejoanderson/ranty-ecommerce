@@ -1,11 +1,11 @@
 
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { ProductsContext } from './ProductsContext';
 
 export const NavBarMenu = ({  hideMenu, setHideMenu }) => {
 
-	const { cart } = useContext( ProductsContext );
+	const cart = useSelector( state => state.cart )
 	const [ productsCounter, setProductsCounter ] = useState(0);
 
 	const getTotalProducts = () => {
