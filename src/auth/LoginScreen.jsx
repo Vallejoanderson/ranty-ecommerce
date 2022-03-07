@@ -3,22 +3,24 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { startLogin } from '../actions/auth';
 import { useForm } from '../hooks/useForm';
+import { useDispatch } from 'react-redux';
 
 export const LoginScreen = () => {
 
+	const dispatch = useDispatch();
 	const [ values, handleInputChange ] = 
 	useForm({
-						identifier: '',
+						email: '',
 						password: '',
 					});
 
-	const { identifier, password } = values;
+	const { email, password } = values;
 
 	const handleLogin = (e) => {
 		e.preventDefault();
-		console.log('You are trying to logging in');
-		console.log(identifier, password);
-		startLogin(values)
+		// console.log('You are trying to logging in');
+		// console.log(email, password);
+		dispatch(startLogin(email, password));
 	}
 	
 	console.log('LoginScreen');
@@ -28,11 +30,11 @@ export const LoginScreen = () => {
 			<form onSubmit={handleLogin}>
 				<input 
 							type="text"
-							placeholder="identifier"
-							name="identifier"
+							placeholder="Email"
+							name="email"
 							className="w-full mb-2 border-2 border-newblue rounded pl-2 focus:outline-none text-black"
 							autoComplete="off"
-							value={identifier}
+							value={email}
 							onChange={handleInputChange}
 				/>
 				<input 

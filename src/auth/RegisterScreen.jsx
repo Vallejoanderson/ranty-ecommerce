@@ -2,10 +2,12 @@
 import React from 'react'
 import { useForm } from '../hooks/useForm';
 import { Link } from 'react-router-dom';
-import { startRegister } from '../actions/auth';
+import { useDispatch } from 'react-redux';
+import { startRegisterWithEmailPasswordName } from '../actions/auth';
 
 export const RegisterScreen = () => {
 
+	const dispatch = useDispatch();
 	const [ values, handleInputChange ] = 
 	useForm({
 						name: '',
@@ -17,7 +19,7 @@ export const RegisterScreen = () => {
 
 	const handleRegister = (e) => {
 		e.preventDefault();
-		startRegister( values );
+		dispatch(startRegisterWithEmailPasswordName(email, password, name));
 	}
 	
 	console.log('RegisterScreen');
@@ -57,7 +59,7 @@ export const RegisterScreen = () => {
 					className="w-full border-2 border-newblue rounded-full text-newblue hover:bg-newblue hover:text-white py-1 mb-4"
 					type="submit"
 				>
-					Login
+					Register
 				</button>
 				<Link to='/auth/login'
 							className="text-newblue hover:underline"

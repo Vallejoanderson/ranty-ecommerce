@@ -2,9 +2,9 @@
 import React, {  } from 'react'
 import { Navigate } from 'react-router-dom';
 
-export const PrivateRoute = ({children}) => {
+export const PrivateRoute = ({children, isLoggedIn}) => {
 
-	return true
+	return isLoggedIn
 				 ? children
 				 : <Navigate to='/auth/login' />
 }
