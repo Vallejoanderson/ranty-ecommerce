@@ -1,15 +1,28 @@
 
 
 import React from 'react'
-import { Link } from 'react-router-dom';
-
-const handleSumbit = (e) => {
-	e.preventDefault();
-}
+import { useNavigate } from 'react-router-dom';
+import { db } from '../firebase/firebase-config';
+import { useSelector }  from 'react-redux';
 
 export const CheckoutPayment = () => {
+
+	const { auth, cart } = useSelector( state => state );
+	const navigate = useNavigate();
+
+	const handleShopping = (e) => {
+		console.log('handleShopping')
+		console.log(cart);
+		console.log(auth.uid);
+		db.collection(auth.uid)
+			.add({...cart})
+			.catch( err => console.log(err ))
+		localStorage.removeItem('cart');
+		navigate('/cart/thanks')
+	}
+
 	return (
-		<form onSubmit={ (e) => handleSumbit(e) } >
+		<form onSubmit={ (e) => { handleShopping(e) } }>
 			<p className="text-center">Payment</p>
 			<div className="flex flex-col md:flex-row gap-2">
 				<div className="flex flex-col">
@@ -40,9 +53,9 @@ export const CheckoutPayment = () => {
 				</div>
 			</div>
 			<div className="text-center">
-				<Link to="/cart/thanks">
-					<button type="submit" className="hover:bg-newblue hover:text-white font-bold px-8 py-4 rounded-full border-2 border-newblue bg-white text-newblue">CONFIRM PAYMENT</button>
-				</Link>
+			<button type="submit" className="hover:bg-newblue hover:text-white font-bold px-8 py-4 rounded-full border-2 border-newblue bg-white text-newblue">
+				CONFIRM PAYMENT
+			</button>	
 			</div>
 		</form>
 	)

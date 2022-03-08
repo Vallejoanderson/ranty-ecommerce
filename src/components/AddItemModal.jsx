@@ -33,7 +33,7 @@ export const AddItemModal = ( { showModal, setShowModal, product:p }) => {
 						{/*body*/}
 						<div className="relative p-6 flex flex-col bg-gray-100">
 							<div className="flex">
-								<img alt="small product image" src={ getProductImage( p.image.url ) } height="50" width="50"/> 
+								<img alt="small product image" src={ getProductImage( p.image ) } height="50" width="50"/> 
 								<p className="my-4 text-blueGray-500 text-lg leading-relaxed">
 									{ p.description }
 								</p>

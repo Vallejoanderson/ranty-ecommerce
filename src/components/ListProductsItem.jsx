@@ -14,9 +14,9 @@ export const ListProductsItem = ({ product:p }) => {
 	return(
 					<div className="border border-gray-200 rounded-lg p-8 shadow hover:shadow-2xl cursor-pointer">
 							<p>{ p.title }</p>
-							<img className="mb-4" alt="product image" height={ 150 } width={ 150 } src={ getProductImage( p.image.url ) }/>
+							<img className="mb-4" alt="product image" height={ 150 } width={ 150 } src={ getProductImage( p.image ) }/>
 							<p className="text-base font-bold text-gray-600 mb-2 pl-2">Price: ${ p. price }</p>
-							<Button fn = { () => { setShowModal( showModal => !showModal ); dispatch({type: types.add, payload: p})}}
+							<Button fn = { () => { setShowModal( showModal => !showModal ); dispatch({type: types.add, payload: p}); console.log(p)}}
 											text = {'Buy this item'} />
 							<AddItemModal
 														showModal = { showModal }

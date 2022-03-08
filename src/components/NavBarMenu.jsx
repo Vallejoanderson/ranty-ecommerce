@@ -11,7 +11,6 @@ export const NavBarMenu = ({  hideMenu, setHideMenu }) => {
 	const { cart, auth } = store;
 	const [ productsCounter, setProductsCounter ] = useState(0);
 	const dispatch = useDispatch();
-	console.log(auth);
 
 	const getTotalProducts = () => {
 		let total = 0;
@@ -53,7 +52,7 @@ export const NavBarMenu = ({  hideMenu, setHideMenu }) => {
 										auth.name
 										?	
 											<>
-												<Link to="/cart/orders" >
+												<Link to="cart/user" >
 													<div className="block mt-4 lg:inline-block lg:mt-0 text-white mr-1 tracking-wide font-medium hover:bg-white hover:text-newblue py-2 px-4 rounded-full capitalize">
 														{auth.name}
 													</div>
