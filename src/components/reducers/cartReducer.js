@@ -1,6 +1,8 @@
 import { types } from "../types/types";
 
-export const cartReducer = (cart=[], action) => {
+const initialState = JSON.parse(localStorage.getItem("cart")) || [];
+
+export const cartReducer = (cart=initialState, action) => {
 	switch ( action.type ) {
 		case types.add:
 			const found = cart.find( cartItem => ( cartItem.slug == action.payload.slug ) );

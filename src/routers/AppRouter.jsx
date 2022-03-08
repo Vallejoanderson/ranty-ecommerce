@@ -14,6 +14,7 @@ import { useSelector } from 'react-redux';
 export const AppRouter = () => {
 
 	const dispatch = useDispatch();
+	const cart = useSelector( state => state.cart );
 	const [ isLoggedIn, setIsLoggedIn ] = useState(false);
 
 	useEffect(() => {
@@ -29,6 +30,10 @@ export const AppRouter = () => {
 			}
 		})
 	}, [dispatch]);
+
+	useEffect(() => {
+		localStorage.setItem('cart', JSON.stringify(cart));
+	}, [cart]);
 
 	return (
 		<BrowserRouter >
