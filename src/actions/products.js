@@ -17,7 +17,16 @@ export const fetchProductsByCategory = (slug) => {
 		axios
 			.get(`${baseUrl}/categories/${slug}`)
 			.then(({data:{products}}) => {
-				dispatch(getProducts(products))
+				dispatch(getProducts(products.map( p => {
+					return({
+						title: p.title,
+						id: p.id,
+						image: p.image.url,
+						description: p.description,
+						price: p.price,
+						slug: p.slug,
+					})
+				})))
 			})
 			.catch( err => { console.log( err ) }) 
 	}
@@ -27,8 +36,17 @@ export const fetchAllProducts = () => {
 	return (dispatch) => {
 		axios
 			.get(`${baseUrl}/products`)
-			.then(({data}) => {
-				dispatch(getProducts(data))
+			.then(({data:products}) => {
+				dispatch(getProducts(products.map( p => {
+					return({
+						title: p.title,
+						id: p.id,
+						image: p.image.url,
+						description: p.description,
+						price: p.price,
+						slug: p.slug,
+					})
+				})))
 			})
 			.catch( err => { console.log( err ) }) 
 	}
