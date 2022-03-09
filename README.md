@@ -11,4 +11,4 @@ Ranty is a website built in React that simulates an e-commerce website
 5. Run npm run dev
 
 ### Live preview
-You can see the preview [here](ranty-ecommerce.netlify.app/).
+You can see the preview [here](https://ranty-ecommerce.netlify.app/).
