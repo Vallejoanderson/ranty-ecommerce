@@ -34,10 +34,7 @@ export const UserOrders = () => {
 					carts.length > 0 
 					?	carts.map( (c, i) =>  {
 							return (
-								<>
-									<CheckoutCartList key={i} cart={c} />
-									<div className="mb-4"></div>
-								</>
+								<CheckoutCartList key={i} cart={c} />
 							)
 						}
 					)

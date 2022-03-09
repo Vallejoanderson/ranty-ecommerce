@@ -54,6 +54,7 @@ export const NavBarMenu = ({  hideMenu, setHideMenu }) => {
 											<>
 												<Link to="cart/user" >
 													<div className="block mt-4 lg:inline-block lg:mt-0 text-white mr-1 tracking-wide font-medium hover:bg-white hover:text-newblue py-2 px-4 rounded-full capitalize">
+														<i class="las la-user la-md"></i>
 														{auth.name}
 													</div>
 												</Link>
