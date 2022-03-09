@@ -14,12 +14,14 @@ export const cartReducer = (cart=initialState, action) => {
 			}
 			return;
 		case types.rm:
-			if( action.payload.quantity > 1 ){
-				action.payload.quantity = action.payload.quantity - 1;
-				return ( [ ...cart ] );
-			}else{
-				return ( cart.filter( cartItem => ( cartItem !== action.payload ) ) );
-			}
+			const found2 = cart.find( cartItem => ( cartItem.slug == action.payload.slug ) )
+			if( found2 !== undefined ){
+				found2.quantity = found2.quantity - 1;
+				if( found2.quantity === 0 ){
+					return( [ ...cart.filter( cartItem => ( cartItem.slug !== action.payload.slug ) ) ] );
+				}else{
+					return( [ ...cart ] );
+			}}
 		default:
 			return cart;
 	}
