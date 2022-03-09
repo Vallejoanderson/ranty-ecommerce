@@ -23,7 +23,7 @@ export const ListProductsItem = ({ product:p, color }) => {
 	}
 
 	return(
-					<div className={`border border-gray-200 rounded-lg p-8 shadow hover:shadow-2xl cursor-pointer ${color}`}>
+					<div className={`border rounded-lg p-8 shadow hover:shadow-2xl cursor-pointer ${color}`}>
 							<p>{ p.title }</p>
 							<img className="mb-4" alt="product image" height={ 150 } width={ 150 } src={ getProductImage( p.image ) }/>
 							<p className="text-base font-bold text-gray-600 mb-2 pl-2">Price: $ { p. price }</p>
