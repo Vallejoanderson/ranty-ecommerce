@@ -2,13 +2,20 @@
 import React, {  useEffect } from 'react';
 import { fetchProductsByCategory, fetchAllProducts } from '../actions/products';
 import { useDispatch } from 'react-redux';
+import { useNavigate, useLocation } from 'react-router-dom';
+import queryString from 'query-string'
 
 export const ListCategoriesItem = ( { categories } ) => {
 
+	const navigate = useNavigate();
+	const location = useLocation();
 	const dispatch = useDispatch();
+
+	const { products = '' } = queryString.parse(location.search);
 
 	const getProductsByCategory = (slug) => {
 		dispatch(fetchProductsByCategory(slug));
+		navigate(`/?products=${slug}`);
 	}
 
 	const getAllProducts = () => {
@@ -16,7 +23,12 @@ export const ListCategoriesItem = ( { categories } ) => {
 	}
 
 	useEffect( () => {
-		getAllProducts();
+		if(products === '') {
+			getAllProducts();
+		}
+		else{
+			getProductsByCategory(products);
+		}
 	}, [])
 
 	return(
