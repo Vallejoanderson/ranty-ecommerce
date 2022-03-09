@@ -7,7 +7,7 @@ import { Button } from './Button';
 import { types } from './types/types';
 import { useDispatch } from 'react-redux';
 
-export const ListProductsItem = ({ product:p }) => {
+export const ListProductsItem = ({ product:p, color }) => {
 	const [ showModal, setShowModal ] = useState( false );
 	const dispatch = useDispatch();
 	const [ counter, setCounter ] = useState(0);
@@ -23,7 +23,7 @@ export const ListProductsItem = ({ product:p }) => {
 	}
 
 	return(
-					<div className="border border-gray-200 rounded-lg p-8 shadow hover:shadow-2xl cursor-pointer">
+					<div className={`border border-gray-200 rounded-lg p-8 shadow hover:shadow-2xl cursor-pointer ${color}`}>
 							<p>{ p.title }</p>
 							<img className="mb-4" alt="product image" height={ 150 } width={ 150 } src={ getProductImage( p.image ) }/>
 							<p className="text-base font-bold text-gray-600 mb-2 pl-2">Price: $ { p. price }</p>
