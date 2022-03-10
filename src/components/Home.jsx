@@ -14,6 +14,9 @@ export const Home = () => {
 
 	useEffect(() => {
 		getData();
+		return () => {
+			console.log('Componente desmontando');
+		};
 	}, []);
 
 	return (

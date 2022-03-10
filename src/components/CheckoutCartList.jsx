@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
-export const CheckoutCartList = cart => {
+export const CheckoutCartList = ({ cart }) => {
 	const [total, setTotal] = useState(0);
 
 	const getTotal = () => {
@@ -42,5 +42,5 @@ export const CheckoutCartList = cart => {
 };
 
 CheckoutCartList.propTypes = {
-	cart: PropTypes.array.isRequired,
+	cart: PropTypes.array,
 };

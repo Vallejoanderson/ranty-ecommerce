@@ -56,7 +56,7 @@ export const AddItemModal = ({ showModal, setShowModal, product: p }) => {
 };
 
 AddItemModal.propTypes = {
-	product: PropTypes.object.isRequired,
-	showModal: PropTypes.bool.isRequired,
-	setShowModal: PropTypes.func.isRequired,
+	product: PropTypes.object,
+	showModal: PropTypes.bool,
+	setShowModal: PropTypes.func,
 };

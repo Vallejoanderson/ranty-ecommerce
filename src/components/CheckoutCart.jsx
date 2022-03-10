@@ -1,15 +1,12 @@
 import { CheckoutCartList } from './CheckoutCartList';
-import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 
-export const CheckoutCart = cart => {
+export const CheckoutCart = () => {
+	const cart = useSelector(state => state.cart);
 	return (
 		<div>
 			<p className='text-center text-base'>Your cart</p>
 			<CheckoutCartList cart={cart} />
 		</div>
 	);
-};
-
-CheckoutCartList.propTypes = {
-	cart: PropTypes.array.isRequired,
 };

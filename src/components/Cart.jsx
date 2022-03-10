@@ -6,6 +6,7 @@ import { CartList } from './CartList';
 
 export const Cart = () => {
 	const cart = useSelector(state => state.cart);
+	console.log(cart);
 
 	return (
 		<div className='flex flex-col items-center gap-4 py-4 lg:py-8 mt-16 text-black px-2'>

@@ -1,6 +1,7 @@
 import { getProductImage } from '../actions/products';
 import { useDispatch } from 'react-redux';
 import { types } from './types/types';
+import PropTypes from 'prop-types';
 
 export const CartList = ({ cart }) => {
 	const dispatch = useDispatch();
@@ -45,4 +46,8 @@ export const CartList = ({ cart }) => {
 			</div>
 		);
 	});
+};
+
+CartList.propTypes = {
+	cart: PropTypes.array,
 };
