@@ -33,7 +33,7 @@ export const ListCategoriesItem = ( { categories } ) => {
 
 	return(
 
-		<div className="flex justify-center gap-8 bg-newblue py-4">
+		<div className="flex justify-center gap-8 bg-newblue py-4 overflow-auto">
 			<div onClick = { () => { getAllProducts() } }
 					 key = { 2000 }
 					 className="text-white tracking-widest font-semibold hover:bg-white hover:text-newblue py-2 px-4 rounded-full cursor-pointer animate__animated animate__flipInX">All</div>
