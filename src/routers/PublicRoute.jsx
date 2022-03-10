@@ -1,9 +1,11 @@
-import React from 'react';
 import { Navigate } from 'react-router-dom';
-  
-export const PublicRoute = ({children, isLoggedIn}) => {
+import PropTypes from 'prop-types';
 
-	return isLoggedIn
-				 ? <Navigate to='/cart/orders' />
-				 : children
-}
+export const PublicRoute = ({ children, isLoggedIn }) => {
+	return isLoggedIn ? <Navigate to='/cart/orders' /> : children;
+};
+
+PublicRoute.propTypes = {
+	children: PropTypes.element.isRequired,
+	isLoggedIn: PropTypes.bool.isRequired,
+};
